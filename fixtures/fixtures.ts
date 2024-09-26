@@ -1,5 +1,5 @@
 import { Page, test as baseTest } from '@playwright/test';
-import { LoginPage } from '../../page-objects/LoginPage';
+import { LoginPage } from '../page-objects/LoginPage';
 import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });

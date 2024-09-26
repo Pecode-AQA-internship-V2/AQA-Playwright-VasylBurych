@@ -1,4 +1,4 @@
-import { test } from './fixtures';
+import { test } from '../../fixtures/fixtures';
 import { HomePage } from '../../page-objects/HomePage';
 import { ProductPage } from '../../page-objects/ProductPage';
 import { WishlistPage } from '../../page-objects/WishlistPage';
@@ -14,4 +14,5 @@ test.describe('E-commerce Test', () => {
         await wishlistPage.verifyProductInWishlist('Radiant Tee');
     });
 });
+
 
