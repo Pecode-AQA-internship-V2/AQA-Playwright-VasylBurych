@@ -1,18 +1,27 @@
-import { Page, test as baseTest } from '@playwright/test';
+import { test as baseTest } from '@playwright/test';
+import { HomePage } from '../page-objects/HomePage';
+import { ProductPage } from '../page-objects/ProductPage';
+import { WishlistPage } from '../page-objects/WishlistPage';
 import { LoginPage } from '../page-objects/LoginPage';
-import * as dotenv from 'dotenv';
-
-dotenv.config({ path: '.env' });
 
 type MyFixtures = {
-    loggedInPage: Page;
+    homePage: HomePage;
+    productPage: ProductPage;
+    wishlistPage: WishlistPage;
+    loginPage: LoginPage;
 };
 
 export const test = baseTest.extend<MyFixtures>({
-    loggedInPage: async ({ page }, use) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.login(process.env.MAGENTO_USERNAME!, process.env.MAGENTO_PASSWORD!);
-        await use(page);
+    homePage: async ({ page }, use) => {
+        await use(new HomePage(page));
     },
+    productPage: async ({ page }, use) => {
+        await use(new ProductPage(page));
+    },
+    wishlistPage: async ({ page }, use) => {
+        await use(new WishlistPage(page));
+    },
+    loginPage: async ({ page }, use) => {
+        await use(new LoginPage(page));
+    }
 });
-

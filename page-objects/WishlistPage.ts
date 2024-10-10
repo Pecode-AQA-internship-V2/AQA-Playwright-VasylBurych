@@ -8,8 +8,11 @@ export class WishlistPage {
         this.page = page;
     }
 
+    async openWishlist() {
+        await this.page.click(this.myWishlistSelector);
+    }
+
     async verifyProductInWishlist(productName: string) {
         await this.page.waitForSelector(`text=${productName}`);
-
     }
 }

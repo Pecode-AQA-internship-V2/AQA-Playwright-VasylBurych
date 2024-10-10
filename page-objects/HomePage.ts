@@ -9,6 +9,7 @@ export class HomePage {
     }
 
     async goToWomenCategory() {
+        await this.page.waitForSelector(this.womenCategorySelector, { state: 'visible' });
         await this.page.click(this.womenCategorySelector);
     }
 }
